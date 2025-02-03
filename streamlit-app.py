@@ -1,4 +1,5 @@
-pip install Flask
+Flask==2.2.2  # ou la version que tu souhaites
+
 from flask import Flask, request, jsonify
 import pickle
 
