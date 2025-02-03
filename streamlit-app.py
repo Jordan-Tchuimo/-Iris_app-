@@ -1,3 +1,25 @@
+from flask import Flask, request, jsonify
+import pickle
+
+app = Flask(__name__)
+
+# Sauvegarde du modèle KNN optimisé avec pickle
+with open('knn_model.pkl', 'wb') as file:
+    pickle.dump(best_knn, file)
+
+# Charger le modèle
+with open('knn_model.pkl', 'rb') as file:
+    model = pickle.load(file)
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.get_json(force=True)
+    features = [data['sepal_length'], data['sepal_width'], data['petal_length'], data['petal_width']]
+    prediction = model.predict([features])
+    return jsonify({'prediction': prediction[0]})
+
+if __name__ == '__main__':
+    app.run(debug=True)
 import streamlit as st
 import requests
 
@@ -17,4 +39,3 @@ if st.button('Prédire'):
     })
     prediction = response.json()['prediction']
     st.write(f"La prédiction pour cette fleur est : {prediction}")
-
