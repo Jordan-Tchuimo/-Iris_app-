@@ -1,8 +1,6 @@
 
 import pickle
 
-app = Flask(__name__)
-
 # Sauvegarde du modèle KNN optimisé avec pickle
 with open('knn_model.pkl', 'wb') as file:
     pickle.dump(best_knn, file)
