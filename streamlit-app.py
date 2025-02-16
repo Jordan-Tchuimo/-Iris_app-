@@ -1,6 +1,4 @@
 
-
-from flask import Flask, request, jsonify
 import pickle
 
 app = Flask(__name__)
