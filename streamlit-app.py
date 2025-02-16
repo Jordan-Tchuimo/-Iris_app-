@@ -1,4 +1,4 @@
-Flask==2.2.0 ou la version que tu souhaites
+
 
 from flask import Flask, request, jsonify
 import pickle
