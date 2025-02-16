@@ -15,6 +15,6 @@ if st.checkbox("Show Dataset"):
 
 #Radio Buttons
 gender = st.radio("what is your gender?",("Male","female"))
-if gender == 'Male':
+if gender=='Male':
   st.text("Hello Guy")
-if gender==
+
