@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import seaborn as sns
@@ -25,4 +24,3 @@ st.pyplot()
 # Afficher des statistiques descriptives
 st.subheader('Statistiques descriptives du jeu de données Iris:')
 st.write(df.describe())
-
