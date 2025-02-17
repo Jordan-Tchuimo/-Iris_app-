@@ -18,3 +18,17 @@ gender = st.radio("what is your gender?",("Male","female"))
 if gender=='Male':
   st.text("Hello Guy")
 
+
+#Selection
+occupation = st.selectbox("Occupation",("Programmer","Data scientist", "Doctor"))
+
+#Sliders
+age = st.slider("Your age",1,99)
+
+#Buttons
+if st.button("About Us"):
+  st.text("Hello Us")
+
+#Write
+st.write("Hello world")
+
