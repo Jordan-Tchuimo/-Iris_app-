@@ -32,3 +32,11 @@ if st.button("About Us"):
 #Write
 st.write("Hello world")
 
+#Images
+from PIL import 
+import os.datetime
+st.image(Image.open(os.path.join('Iris_sectosa.jpg')))
+
+#Dates
+st.date_input("Today date", datetime.datetime.now())
+
