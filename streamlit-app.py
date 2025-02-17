@@ -79,9 +79,30 @@ if st.checkbox("Show Bar Plot with Matplotlib"):
   st.pyplot()
 
 #Correlation
-if st.checkbox("Show Sumary of Dataset"):
-  st.write(data.describe())
+if st.checkbox("Show Correlation Plot with Matplotlib"):
+  plt.matshow(data.corr()))
+  st.pyplot()
+
+#Correlation
+if st.checkbox("Show Correlation Plot with Seaborn"):
+  st.write(sns.heatmap(data.corr()))
+  st.pyplot()
+
+#Group
+if st.checkbox("Show Bar Chart Plot"):
+  v_group = data.groupby('species)
+  st.bar_chart(v_group)
+
+#Group
+if st.checkbox("Show Line Plot"):
+  v_group = data.groupby('species)
+  st.Line_chart(data)
+
+#Group
+if st.checkbox("Show Area Chart Plot"):
+  v_group = data.groupby('species)
+  st.area_chart(v_group)
 
 
-
+#Images
 
