@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
-from PIL import Image
+from PIL import Image, ImageEnhance,ImageFiltrer
 
 
 #title/text
@@ -15,7 +15,7 @@ st.text("Built with streamlit")
 my_dataset = 'Iris.csv'
 
 #Fxn to Load Dataset
-
+@st.cache(persist=True)
 def explore_data(dataset):
   df = pd.read_csv("Iris.csv")  # Example, check this
   return df
@@ -107,4 +107,28 @@ if st.checkbox("Show Area Chart Plot"):
 #Images
 @st.cache 
 def load_image(img):
+  im = Image.open(os.path.join(img))
+  return im
                          
+species_type=st.radio("Select Species Type",("setosa","virginica","versicolor"))
+if species_type == 'setosa':
+  st.text("Showing Setosa Species")
+  st.image(load_image('imgs/Iris_setosa.jpg'))
+
+if species_type == 'versicolor':
+  st.text("Showing versicolor Species")
+  st.image(load_image('imgs/Iris_versicolor.jpg'))
+
+if species_type == 'virginica':
+  st.text("Showing virginica Species")
+  st.image(load_image('imgs/Iris_virginica.jpg'))
+
+#Show Image
+if st.checkbox("Show/Hide Image"):
+  my_image = load_image("Iris_setosa.jpg")
+  enh = ImageEnhance.contrast(my_image)
+  num = st.slider("Set Image Contrast", 1.0,4.0)
+  img_width = st.slider("set Image width", 300,500)
+  st.image(enh.enhance(num),width img_width)
+
+
