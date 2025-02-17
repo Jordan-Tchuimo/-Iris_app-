@@ -8,11 +8,11 @@ from PIL import Image
 
 
 #title/text
-st.title("Iris EDA App")
+st.title("iris EDA App")
 st.text("Built with streamlit")
 
 #EDA
-my_dataset = 'Iris.csv'
+my_dataset = 'iris.csv'
 
 #Fxn to Load Dataset
 
