@@ -26,5 +26,62 @@ if st.checkbox ("Preview Dataset"):
   data = explore_data(my_dataset)
   if st.button("Head"):
     st.write(data.head())
+  elif st.button("Tail"):
+    st.write(data.tail())
+  else:
+    st.write(data.head(2))
+
+#Show entire dataset
+if st.checkbox("Show All Dataset"):
+  #st.write(data)
+  st.dataframe(data)
+
+#Show Column Name
+if st.checkbox("Show Column Names"):
+  st.write(data.columns)
+
+
+#Show Dimensions
+data_dim= st.radio("What Dimensions Do you want to see?",("Rows","Columns","All"))
+if data_dim == 'Rows':
+  st.text("Showing Rows")
+  st.write(data.shape[0])
+elif data_dim == 'Columns':
+  st.text("Showing Columns")
+  st.write(data.shape[1])
+else:
+  st.text("Showing Shape of Dataset")
+  st.write(data.shape)
+
+
+#Sumary
+if st.checkbox("Show Sumary of Dataset"):
+  st.write(data.describe())
+
+#Select A Columns
+col_option = st.selectbox("Select Column",("sepallength","sepalwidth","petallength","petalwidth","species"))
+if col_option == 'sepalwidth':
+  st.write(data['sepalwidth'])
+elif col_option == 'sepallength':
+  st.write(data['sepallength'])
+elif col_option == 'petalwidth':
+  st.write(data['petalwidth'])
+elif col_option == 'petallength':
+  st.write(data['petallength'])
+elif col_option == 'species':
+  st.write(data['species'])
+else:
+  st.write("Select Column")
+
+#Plot
+if st.checkbox("Show Bar Plot with Matplotlib"):
+  st.write(data.plot(kind='bar'))
+  st.pyplot()
+
+#Correlation
+if st.checkbox("Show Sumary of Dataset"):
+  st.write(data.describe())
+
+
 
 
