@@ -131,4 +131,10 @@ if st.checkbox("Show/Hide Image"):
   img_width = st.slider("set Image width", 300,500)
   st.image(enh.enhance(num),width img_width)
 
+# About
+if st.button("About App"):
+  st.text("Iris EDA App")
+  st.text("Built with Streamlit")
+  st.text("Cudosto the Streamlit Team")
+
 
