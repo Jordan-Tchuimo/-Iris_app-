@@ -1,3 +1,30 @@
+from flask import Flask, request, jsonify
+import pickle
+import numpy as np
+
+app = Flask(__name__)
+
+# Charger le modèle KNN sauvegardé
+with open('knn_model.pkl', 'rb') as f:
+    model = pickle.load(f)
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    # Récupérer les données envoyées dans la requête POST
+    data = request.get_json()
+
+    # Extraire les caractéristiques (en supposant qu'elles soient envoyées sous forme de liste ou dictionnaire)
+    features = np.array([data['sepal_length'], data['sepal_width'], data['petal_length'], data['petal_width']]).reshape(1, -1)
+
+    # Faire la prédiction avec le modèle
+    prediction = model.predict(features)
+
+    # Retourner la prédiction sous forme de réponse JSON
+    return jsonify({'species': prediction[0]})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 import streamlit as st
 import requests
 
