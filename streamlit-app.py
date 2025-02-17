@@ -1,7 +1,6 @@
 import streamlit as st
 #EDA
 import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
 import os 
 from PIL import Image
