@@ -1,42 +1,29 @@
 import streamlit as st
+#EDA
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os 
+from PIL import Image
+
 
 #title/text
 st.title("Iris EDA App")
 st.text("Built with streamlit")
 
-#Headers and subheader
-st.header("EDA App")
-st.subheader("Iris Dataset")
+#EDA
+my dataset = 'Iris.csv'
+
+#Fxn to Load Dataset
+
+def explore_data(dataset):
+  df = pd.read_csv(os.path.join(dataset))
+  return df
 
 
-#Checkbox
-if st.checkbox("Show Dataset"):
-  st.text("Showing Dataset")
+if st.checkbox ("Preview Dataset"):
+  data = explore_data(my dataser)
+  if st.button("Head"):
+    st.write(data.head())
 
-#Radio Buttons
-gender = st.radio("what is your gender?",("Male","female"))
-if gender=='Male':
-  st.text("Hello Guy")
-
-
-#Selection
-occupation = st.selectbox("Occupation",("Programmer","Data scientist", "Doctor"))
-
-#Sliders
-age = st.slider("Your age",1,99)
-
-#Buttons
-if st.button("About Us"):
-  st.text("Hello Us")
-
-#Write
-st.write("Hello world")
-
-#Images
-from PIL import 
-import os.datetime
-st.image(Image.open(os.path.join('Iris_sectosa.jpg')))
-
-#Dates
-st.date_input("Today date", datetime.datetime.now())
 
