@@ -105,4 +105,6 @@ if st.checkbox("Show Area Chart Plot"):
 
 
 #Images
-
+@st.cache 
+def load_image(img):
+                         
