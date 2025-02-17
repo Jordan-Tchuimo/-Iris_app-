@@ -80,7 +80,7 @@ if st.checkbox("Show Bar Plot with Matplotlib"):
 
 #Correlation
 if st.checkbox("Show Correlation Plot with Matplotlib"):
-  plt.matshow(data.corr()))
+  plt.matshow(data.corr())
   st.pyplot()
 
 #Correlation
