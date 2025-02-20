@@ -14,7 +14,7 @@ petal_length = st.number_input('Longueur du pétale (cm)', min_value=0.0, max_va
 petal_width = st.number_input('Largeur du pétale (cm)', min_value=0.0, max_value=10.0, step=0.1)
 
 # Créer un bouton pour envoyer la requête
-if st.button('Faire une Prédiction'):
+if st.button('Faire une Prédiction', type="primary"):
     # Préparation des données d'entrée
     features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
     X = pd.DataFrame(features, columns=["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"])
