@@ -18,8 +18,8 @@ if st.button('Faire une Prédiction'):
     # Préparation des données d'entrée
     features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
     X = pd.DataFrame(features, columns=["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"])
-    scaler = joblib.load("my_scaler.pkl")
-    model = joblib.load("my_model.pkl")
+    scaler = joblib.load("mon_scaler.pkl")
+    model = joblib.load("mon_model2.pkl")
     X_transform = scaler.transform(X)
     reponse = model.predict(X_transform)
     prediction = reponse[0]
