@@ -1,7 +1,9 @@
 
 import streamlit as st
 import requests
-
+import numpy as np 
+import pandas as pd
+import joblib
 # Créer l'interface utilisateur
 st.title("Prédiction de l'Espèce d'Iris")
 
@@ -13,23 +15,18 @@ petal_width = st.number_input('Largeur du pétale (cm)', min_value=0.0, max_valu
 
 # Créer un bouton pour envoyer la requête
 if st.button('Faire une Prédiction'):
-    # Organiser les données dans un dictionnaire
-    data = {
-        'sepal_length': sepal_length,
-        'sepal_width': sepal_width,
-        'petal_length': petal_length,
-        'petal_width': petal_width
-    }
-
-    # Faire une requête POST à l'API Flask
-    response = requests.post("http://127.0.0.1:5000/predict", json=data)
-
-    # Afficher la prédiction
-    if response.status_code == 200:
-        prediction = response.json()['species']
-        st.write(f"La prédiction est : {prediction}")
-    else:
-        st.write("Erreur dans la requête")
+    # Préparation des données d'entrée
+    features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
+    X = pd.DataFrame(features, columns=["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"])
+    scaler = joblib.load("my_scaler.pkl")
+    model = joblib.load("my_model.pkl")
+    X_transform = scaler.transform(X)
+    reponse = model.predict(X_transform)
+    prediction = reponse[0]
+    
+    
+    # Affichage du résultat
+    st.write("Ta fleur est: ", prediction)
 
 
 
